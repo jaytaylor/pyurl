@@ -1,0 +1,18 @@
+#Google Search Engine Robot
+User-Agent: Googlebot
+Crawl-delay: 0 
+
+#Yahoo Search Engine Robot
+User-Agent: Y
+Crawl-delay: 0
+
+#Microsoft Search Engine Robot
+User-Agent: msnbot, bing
+Crawl-delay: 0
+
+#Miscellaneous
+User-agent: *
+
+#Directories
+Disallow: /scripts/
+

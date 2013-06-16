@@ -1,0 +1,63 @@
+##
+# pyurl.us
+# created 2010-03-07
+##
+#<VirtualHost *:80>
+#    ServerName www.pyurl.us
+#    ServerAlias www.pyurl.us
+#    ServerAlias www2.pyurl.us
+#    RedirectMatch permanent ^/$ http://pyurl.us/
+#    RedirectMatch permanent ^$ http://pyurl.us/
+#    RedirectMatch permanent ^/(.*)$ http://pyurl.us/$1
+#</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName pyurl.us
+    ServerAlias pyurl.us
+    ServerAlias www.pyurl.us
+
+    DocumentRoot /var/www/pyurl.us/public_html
+
+    Include conf/deflate.conf
+
+    CustomLog /var/log/httpd/pyurl.us-access_log deflate
+    ErrorLog /var/log/httpd/pyurl.us-error_log
+    DeflateFilterNote ratio
+
+    <Directory /var/www/pyurl.us/public_html>
+      AllowOverride Indexes
+      Options FollowSymLinks
+      AllowOverride all
+      Order allow,deny
+      Allow from all
+    </Directory>
+
+	WSGIDaemonProcess pyurl user=nobody group=nobody threads=25
+	WSGIProcessGroup pyurl
+	WSGIScriptAlias / /var/www/pyurl/app.wsgi
+
+	Alias /preview_cache/ "/var/www/pyurl/preview_cache/"
+	Alias /media/ "/var/www/pyurl/media/"
+	Alias /robots.txt "/var/www/pyurl/static_files/robots.txt"
+	Alias /favicon.ico "/var/www/pyurl/static_files/favicon.ico"
+	AliasMatch /?(styles/[^/]*\.css) "/var/www/pyurl/static_files/$1"
+
+	<Directory "/var/www/pyurl/media/">
+		Order allow,deny
+		Options Indexes
+		Allow from all
+		IndexOptions FancyIndexing
+	</Directory>
+
+	<Directory /var/www/pyurl/>
+		Order deny,allow
+		Allow from all
+	</Directory>
+
+	<Directory "/var/www/pyurl/">
+		AllowOverride All
+		Order allow,deny
+		Allow from All
+	</Directory>
+
+</VirtualHost>

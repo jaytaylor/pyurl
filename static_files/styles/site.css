@@ -1,0 +1,31 @@
+body { 
+}
+
+p.indent_link {
+text-indent:2em;
+}
+
+form.urlform {
+width:27em;
+padding:0.5em 0 0.5em 1em;
+background:#ccc;
+}
+
+form.urlform div label {
+font-weight:bolder;
+}
+
+input#id_path {
+width:20em;
+}
+
+input#id_hash {
+width:5em;
+}
+
+form.urlform div div.submit {
+background:red;
+text-align:center;
+}
+
+

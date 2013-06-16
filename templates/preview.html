@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}URL Preview{% endblock %}
+
+{% block content %}
+The following URL:
+<p class="indent_link">
+	<a href="{{ url.target_url }}">{{ url.target_url }}</a>
+</p>
+consists of {{ url.target_url_len }} characters, and resulted in a URL which is {{ url.short_url_len }} characters long:
+<p class="indent_link">
+	<a href="{{ url.short_url }}">{{ url.short_url }}</a>
+</p>
+<p class="indent_link">
+	<a href="{{ url.base_url }}/preview/{{ url.hash }}">{{ url.base_url }}/preview/{{ url.hash }}</a>
+</p>
+
+{% if preview_image_small %}
+preview image (<a href="/{{ preview_image_large }}">click for larger view</a>):
+<a href="/{{ preview_image_large }}"><img src="/{{ preview_image_small }}" /></a>
+
+{% endif %}
+
+{% endblock %}

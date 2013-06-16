@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Shorten a URL{% endblock %}
+
+{% block content %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p><br />{% endif %}
+Shortened URL: <a href="http://u.bf2e.com/{{ hash }}">http://u.bf2e.com/{{ hash }}</a> 
+<br />
+<a href="/">home</a>
+{% endblock %}

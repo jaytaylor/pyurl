@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Shorten a URL{% endblock %}
+
+{% block content %}
+{% if url %}
+<h2>Shortened URL successfully created!</h2>
+The following URL:
+<p class="indent_link">
+	<a href="{{ url.target_url }}">{{ url.target_url }}</a>
+</p>
+consists of {{ url.target_url_len }} characters, and resulted in a URL which is {{ url.short_url_len }} characters long:
+<p class="indent_link">
+	<a href="{{ url.short_url }}">{{ url.short_url }}</a>
+</p>
+<p class="indent_link">
+	<a href="{{ url.base_url }}/preview/{{ url.hash }}">{{ url.base_url }}/preview/{{ url.hash }}</a>
+</p>
+
+<h1>Create another short URL</h1>
+{% else %}
+<h1>Shorten a URL</h1>
+{% endif %}
+{% include "url_form.html" %}
+{% endblock %}

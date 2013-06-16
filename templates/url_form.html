@@ -1,0 +1,18 @@
+<form method="post" action="/create/" class="urlform">
+<div>
+    <div>
+		{{ url_form.path.errors }}
+		<label for="id_path">Url to make short:</label>
+		<br />
+		{{ url_form.path }}
+    <input type="submit" value="Shorten!"/>
+    </div>
+{% if allow_custom %}
+	<div>
+		<label for="id_hash">Request short name (optional):</label>
+		<br />
+		{{ url_form.hash }}
+	</div>
+{% endif %}
+</div>
+</form>
